@@ -1,113 +1,218 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useState } from 'react';
+import Hero from '@/components/Hero';
+import GeneratedNews from '@/components/GeneratedNews';
+import AIChat from '@/components/AIChat';
+import NewsSection from '@/components/NewsSection';
+import Footer from '@/components/Footer';
+import { Input, Button } from '@/components/ui';
+
+const HomePage = () => {
+  const [input, setInput] = useState('');
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleGenerate = async () => {
+    setLoading(true);
+    setArticles([]);
+
+    try {
+      const userProfile = {
+        preferred_name: 'John Doe',
+        country_of_residence: 'SF',
+        age: 40,
+        job_title: 'Senior Data Scientist',
+        job_function: 'Data Analysis',
+        interests: ['llm', 'AI'],
+        goals: 'lead innovative projects',
+      };
+
+      const queryPayload = {
+        query: input,
+        user_profile: userProfile,
+      };
+
+      console.log('Query Payload:', queryPayload);
+
+      const queryResponse = await fetch(
+        `https://erniesg--query-svc-query.modal.run`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(queryPayload),
+        }
+      );
+
+      const contentType = queryResponse.headers.get('Content-Type');
+      let queryData;
+
+      if (contentType && contentType.includes('application/json')) {
+        queryData = await queryResponse.json();
+      } else {
+        const queryText = await queryResponse.text();
+        console.log('Query Response Text:', queryText);
+        queryData = {
+          urls: queryText.split('\n').filter((url) => url.startsWith('http')),
+        };
+      }
+
+      console.log('Query Response Data:', queryData);
+
+      if (!Array.isArray(queryData.urls)) {
+        throw new Error("Invalid response format: 'urls' is not an array");
+      }
+
+      for (const url of queryData.urls) {
+        console.log('Reading URL:', url);
+
+        const readResponse = await fetch(
+          `https://erniesg--read-svc-read.modal.run`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ urls: [url] }),
+          }
+        );
+
+        const readText = await readResponse.text();
+        console.log('Read Response Text:', readText);
+
+        if (!readResponse.ok) {
+          throw new Error(
+            `Error reading URL: ${readResponse.status} ${readResponse.statusText}`
+          );
+        }
+
+        const readData = JSON.parse(readText);
+        console.log('Read Response JSON:', readData);
+
+        const extractResponse = await fetch(
+          `https://erniesg--extract-svc-extract.modal.run`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(readData),
+          }
+        );
+
+        const extractText = await extractResponse.text();
+        console.log('Extract Response Text:', extractText);
+
+        if (!extractResponse.ok) {
+          throw new Error(
+            `Error extracting data: ${extractResponse.status} ${extractResponse.statusText}`
+          );
+        }
+
+        const extractData = JSON.parse(extractText);
+        console.log('Extract Response JSON:', extractData);
+
+        const detailedUrls = extractData.article_urls;
+        for (const detailedUrl of detailedUrls) {
+          console.log('Reading Detailed URL:', detailedUrl);
+
+          const detailedReadResponse = await fetch(
+            `https://erniesg--read-svc-read.modal.run`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ urls: [detailedUrl] }),
+            }
+          );
+
+          const detailedReadText = await detailedReadResponse.text();
+          console.log('Detailed Read Response Text:', detailedReadText);
+
+          if (!detailedReadResponse.ok) {
+            throw new Error(
+              `Error reading detailed URL: ${detailedReadResponse.status} ${detailedReadResponse.statusText}`
+            );
+          }
+
+          const detailedReadData = JSON.parse(detailedReadText);
+          console.log('Detailed Read Response JSON:', detailedReadData);
+
+          const structureResponse = await fetch(
+            `https://erniesg--extract-svc-extract.modal.run`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(detailedReadData),
+            }
+          );
+
+          const structureText = await structureResponse.text();
+          console.log('Structure Response Text:', structureText);
+
+          if (!structureResponse.ok) {
+            throw new Error(
+              `Error extracting structure: ${structureResponse.status} ${structureResponse.statusText}`
+            );
+          }
+
+          const structureData = JSON.parse(structureText);
+          console.log('Structure Response JSON:', structureData);
+
+          const scoreResponse = await fetch(
+            `https://erniesg--score-svc-score.modal.run`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                content: detailedReadData,
+                structure: structureData,
+              }),
+            }
+          );
+
+          const scoreText = await scoreResponse.text();
+          console.log('Score Response Text:', scoreText);
+
+          if (!scoreResponse.ok) {
+            throw new Error(
+              `Error scoring article: ${scoreResponse.status} ${scoreResponse.statusText}`
+            );
+          }
+
+          const scoredArticle = JSON.parse(scoreText);
+          console.log('Scored Article JSON:', scoredArticle);
+
+          setArticles((prev) => [...prev, scoredArticle as any]); // Use type assertion
+        }
+      }
+    } catch (err) {
+      console.error('Error generating articles:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="flex flex-col items-center justify-center w-full min-h-[100dvh] bg-gray-950 px-4 py-12 md:px-6 lg:py-24">
+      <div className="container max-w-4xl space-y-8">
+        <Hero />
+        <div className="flex items-center justify-center space-x-4">
+          <Input
+            className="flex-1 max-w-md bg-gray-800 border-gray-700 text-gray-400 placeholder:text-gray-500 focus:border-gray-600 focus:ring-gray-600 font-[Cabin]"
+            placeholder="Enter your desired topics"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Button
+            onClick={handleGenerate}
+            className="bg-gradient-to-br from-[#E00101] to-[#00BFFF] text-gray-950 font-medium hover:from-[#00BFFF] hover:to-[#E00101]"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            Generate
+          </Button>
         </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        {loading && <p>Loading...</p>}
+        <NewsSection articles={articles} loading={loading} />
+        <AIChat />
+        <Footer />
       </div>
     </main>
   );
-}
+};
+
+export default HomePage;
