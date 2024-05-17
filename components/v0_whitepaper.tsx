@@ -108,77 +108,77 @@ export function V0_whitepaper() {
     {
       title: 'First-in-the-World AI-Native Newsroom',
       description:
-      'Driving operational excellence and enabling meaningful dialogue in society',
-  },
-  {
-    title: 'A Self-Reinforcing Content and Data Flywheel',
-    description:
-      'Enhancing core content product, which improves engagement and retention, creating a cycle of improvement',
-  },
-];
+        'Driving operational excellence and enabling meaningful dialogue in society',
+    },
+    {
+      title: 'A Self-Reinforcing Content and Data Flywheel',
+      description:
+        'Enhancing core content product, which improves engagement and retention, creating a cycle of improvement',
+    },
+  ];
 
-const threats = [
-  {
-    title: 'Intense Competition',
-    description: 'Competing with established players and emerging startups',
-  },
-  {
-    title: 'Rapid Advancements in AI Technologies',
-    description:
-      'Need for significant investments in talent and infrastructure',
-  },
-  {
-    title: 'Potential Reader Skepticism',
-    description: 'Possible backlash towards AI-generated content',
-  },
-  {
-    title: 'Risks Associated with AI Bias and Ethical Breaches',
-    description:
-      'Potential for AI bias, inaccuracies, or ethical issues that could harm reputation',
-  },
-];
+  const threats = [
+    {
+      title: 'Intense Competition',
+      description: 'Competing with established players and emerging startups',
+    },
+    {
+      title: 'Rapid Advancements in AI Technologies',
+      description:
+        'Need for significant investments in talent and infrastructure',
+    },
+    {
+      title: 'Potential Reader Skepticism',
+      description: 'Possible backlash towards AI-generated content',
+    },
+    {
+      title: 'Risks Associated with AI Bias and Ethical Breaches',
+      description:
+        'Potential for AI bias, inaccuracies, or ethical issues that could harm reputation',
+    },
+  ];
 
-return (
-  <>
-    <div className="bg-[#F9F9F9] py-12 px-4 md:px-8 lg:px-16">
-      <div className="mx-auto max-w-[800px] space-y-12">
-        <div className="space-y-4">
-          <h1 className="bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-            Algorithms for Authenticity
-          </h1>
-          <p className="text-2xl font-medium text-gray-700">
-            Building an AI-Native Newsroom at Tech in Asia
-          </p>
-        </div>
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Abstract</h2>
-          <p className="text-gray-700">
-            This white paper outlines a strategic roadmap for Tech in Asia to
-            build an AI-native newsroom, leveraging AI technologies to enhance
-            subscriber growth, engagement, and operational efficiency.
-            Aligning with the company&apos;s mission and post-acquisition
-            growth strategy, the initiatives draw from an analysis of 10 media
-            outlets and Tech in Asia&apos;s capabilities. These prioritised
-            initiatives and establishment of a dedicated AI desk aims to
-            support the goal of over $100 million in annual recurring revenue
-            by 2027.
-          </p>
-        </div>
-        <TableofContents />
-        <Section1 />
-        <Section2 />
-        <SWOTSection
-          strengths={strengths}
-          weaknesses={weaknesses}
-          opportunities={opportunities}
-          threats={threats}
-        />
-        <Section4 />
-        <MetaNarrativeSection />
-        <Section5_StrategicInitiatives />
-        <Section6_ContentEngine />
-        <Section7_GeographyAndConclusion />
-        {/* <div className="space-y-4" id="conclusion">
+  return (
+    <>
+      <div className="bg-[#F9F9F9] py-12 px-4 md:px-8 lg:px-16">
+        <div className="mx-auto max-w-[800px] space-y-12">
+          <div className="space-y-4">
+            <h1 className="bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
+              Algorithms for Authenticity
+            </h1>
+            <p className="text-2xl font-medium text-gray-700">
+              Building an AI-Native Newsroom at Tech in Asia
+            </p>
+          </div>
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold">Abstract</h2>
+            <p className="text-gray-700">
+              This white paper outlines a strategic roadmap for Tech in Asia to
+              build an AI-native newsroom, leveraging AI technologies to enhance
+              subscriber growth, engagement, and operational efficiency.
+              Aligning with the company&apos;s mission and post-acquisition
+              growth strategy, the initiatives draw from an analysis of 10 media
+              outlets and Tech in Asia&apos;s capabilities. These prioritised
+              initiatives and establishment of a dedicated AI desk aims to
+              support the goal of over $100 million in annual recurring revenue
+              by 2027.
+            </p>
+          </div>
+          <TableofContents />
+          <Section1 />
+          <Section2 />
+          <SWOTSection
+            strengths={strengths}
+            weaknesses={weaknesses}
+            opportunities={opportunities}
+            threats={threats}
+          />
+          <Section4 />
+          <MetaNarrativeSection />
+          <Section5_StrategicInitiatives />
+          <Section6_ContentEngine />
+          <Section7_GeographyAndConclusion />
+          {/* <div className="space-y-4" id="conclusion">
           <h2 className="text-2xl font-bold">
             5. Conclusion and Future Outlook
           </h2>
@@ -256,9 +256,6 @@ return (
     </>
   );
 }
-
-
-
 
 function LineChart(props: any) {
   return (
