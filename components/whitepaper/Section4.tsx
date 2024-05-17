@@ -50,7 +50,7 @@ export function Section4() {
             and offering unique, high-quality content that sets them apart. →
             Tech in Asia can double down on its expertise in the Asian tech and
             startup ecosystem, providing in-depth analysis and insights that
-            readers can't find elsewhere.
+            readers can&apos;t find elsewhere.
           </p>
         </div>
         <div className="border p-4">
@@ -72,10 +72,10 @@ export function Section4() {
           <p className="text-gray-700">
             Defector Media and 404 Media have built strong communities around
             their brands, with readers feeling a sense of ownership and
-            investment in the publications' success. → By involving readers in
-            the AI-Native newsroom journey, seeking their inputs and feedback,
-            Tech in Asia can create opportunities for collaboration that build a
-            sense of community.
+            investment in the publications&apos; success. → By involving readers
+            in the AI-Native newsroom journey, seeking their inputs and
+            feedback, Tech in Asia can create opportunities for collaboration
+            that build a sense of community.
           </p>
         </div>
         <div className="border p-4">

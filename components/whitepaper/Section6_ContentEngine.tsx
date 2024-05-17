@@ -17,8 +17,9 @@ export function Section6_ContentEngine() {
       <p className="text-gray-700">
         Interest in AI is not recent. An examination of Google search interest
         trends from 2004 shows “ai” to consistently outperform existing
-        dedicated sections such as "startups", ecommerce", "fintech" and
-        "crypto" (greentech was excluded since its absolute value is minimal).{' '}
+        dedicated sections such as &quot;startups&quot;, &quot;ecommerce&quot;,
+        fintech&quot; and &quot;crypto&quot; (greentech was excluded since its
+        absolute value is minimal).{' '}
       </p>
       <div className="w-full">
         {/* <FlourishEmbed src="visualisation/18005063" /> */}
@@ -38,13 +39,14 @@ export function Section6_ContentEngine() {
         technology.
       </p>
       <p className="text-gray-700">
-        For example, the New York Times misrepresented Facebook’s device
-        partnerships, and Bloomberg inaccurately described Amazon's "Just Walk
-        Out" technology, highlighting a prevalent misunderstanding in mainstream
-        media. These examples underscore the need for tech media to develop
-        specialised expertise in AI to provide nuanced, accurate reporting on
-        the technology. Tech in Asia, with its roots in Y Combinator, has a
-        unique opportunity to lead with informative coverage.{' '}
+        For example, the New York Times misrepresented Facebook&apos;s device
+        partnerships, and Bloomberg inaccurately described Amazon&apos;s
+        &quot;Just Walk Out&quot; technology, highlighting a prevalent
+        misunderstanding in mainstream media. These examples underscore the need
+        for tech media to develop specialised expertise in AI to provide
+        nuanced, accurate reporting on the technology. Tech in Asia, with its
+        roots in Y Combinator, has a unique opportunity to lead with informative
+        coverage.{' '}
       </p>
       <h3 className="text-xl font-bold">Strategic Benefits</h3>
       <p className="text-gray-700">

@@ -1,31 +1,27 @@
-import React from 'react';
-import Hero from '@/components/Hero';
-import GeneratedNews from '@/components/GeneratedNews';
-import AIChat from '@/components/AIChat';
-import NewsSection from '@/components/NewsSection';
-import Footer from '@/components/Footer'; // Import the Footer component
-import { Input, Button } from '@/components/ui';
-
-const HomePage = () => {
-  return (
-    <main className="flex flex-col items-center justify-center w-full min-h-[100dvh] bg-gray-950 px-4 py-12 md:px-6 lg:py-24">
-      <div className="container max-w-4xl space-y-8">
-        <Hero />
-        <div className="flex items-center justify-center space-x-4">
-          <Input
-            className="flex-1 max-w-md bg-gray-800 border-gray-700 text-gray-400 placeholder:text-gray-500 focus:border-gray-600 focus:ring-gray-600 font-[Cabin]"
-            placeholder="Enter your desired topics"
-          />
-          <Button className="bg-gradient-to-br from-[#E00101] to-[#00BFFF] text-gray-950 font-medium hover:from-[#00BFFF] hover:to-[#E00101] font-[Cabin]">
-            Generate
-          </Button>
-        </div>
-        <NewsSection />
-        <AIChat />
-        <Footer />
-      </div>
-    </main>
-  );
-};
-
-export default HomePage;
+import React from 'react'; import Hero from '@/components/Hero'; import
+GeneratedNews from '@/components/GeneratedNews'; import AIChat from
+'@/components/AIChat'; import NewsSection from '@/components/NewsSection';
+import Footer from '@/components/Footer'; // Import the Footer component import
+{ Input, Button } from '@/components/ui'; const HomePage = () => { return (
+<main
+  className="flex flex-col items-center justify-center w-full min-h-[100dvh] bg-gray-950 px-4 py-12 md:px-6 lg:py-24"
+>
+  <div className="container max-w-4xl space-y-8">
+    <Hero />
+    <div className="flex items-center justify-center space-x-4">
+      <input
+        className="flex-1 max-w-md bg-gray-800 border-gray-700 text-gray-400 placeholder:text-gray-500 focus:border-gray-600 focus:ring-gray-600 font-[Cabin]"
+        placeholder="Enter your desired topics"
+      />
+      <button
+        className="bg-gradient-to-br from-[#E00101] to-[#00BFFF] text-gray-950 font-medium hover:from-[#00BFFF] hover:to-[#E00101] font-[Cabin]"
+      >
+        Generate
+      </button>
+    </div>
+    <NewsSection />
+    <AIChat />
+    <footer />
+  </div>
+</main>
+); }; export default HomePage;

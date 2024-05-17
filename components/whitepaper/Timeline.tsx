@@ -58,7 +58,7 @@ export function TimelineComponent() {
               </li>
             </ul>
             <p>
-              Year 1 helps address Tech in Asia's limited adoption of AI
+              Year 1 helps address Tech in Asia&apos;s limited adoption of AI
               technologies and lays the pipelines and groundwork for enhancing
               content quality and user engagement.
             </p>
@@ -102,7 +102,7 @@ export function TimelineComponent() {
               </li>
               <li>
                 Fully implement automated metadata generation across Tech in
-                Asia's content archive
+                Asia&apos;s content archive
               </li>
             </ul>
             <p>
@@ -150,10 +150,10 @@ export function TimelineComponent() {
               </li>
             </ul>
             <p>
-              Year 3 aims to fully integrate AI into Tech in Asia's editorial
-              workflows and continuously refine algorithms. These efforts help
-              solidify Tech in Asia's position as a leader in AI-driven
-              journalism.
+              Year 3 aims to fully integrate AI into Tech in Asia&apos;s
+              editorial workflows and continuously refine algorithms. These
+              efforts help solidify Tech in Asia&apos;s position as a leader in
+              AI-driven journalism.
             </p>
           </Collapse>
         </TimelineContent>
