@@ -63,8 +63,8 @@ export function Section2() {
       </table>
       <p className="text-gray-700">
         From its current position, it is evident that there are opportunities
-        for growth and improvement for Tech in Asia to move towards the "High
-        Engagement, High Retention" quadrant.
+        for growth and improvement for Tech in Asia to move towards the
+        &quot;High Engagement, High Retention&quot; quadrant.
       </p>
     </div>
   );
