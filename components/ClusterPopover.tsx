@@ -32,9 +32,7 @@ export function ClusterPopover({
             </PopoverButton>
           </div>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold">{title}</h2>
             <div className="mt-2 text-gray-700">
-              <h3 className="text-xl font-bold">Thematic Discussion</h3>
               <div dangerouslySetInnerHTML={{ __html: content }} />
             </div>
           </div>

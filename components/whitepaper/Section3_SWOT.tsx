@@ -40,15 +40,17 @@ export function SWOTSection({
 }: SWOTProps) {
   return (
     <div className="space-y-4" id="section-3-swot-analysis">
-      <h2 className="text-2xl font-bold">3. A SWOT Analysis of Tech in Asia</h2>
-      <p className="text-gray-700">
+      <h2 className="text-2xl font-bold gradient-text">
+        3. A SWOT Analysis of Tech in Asia
+      </h2>
+      <p>
         Building on the market quadrant insights, this SWOT analysis examines
         both internal and external forces to inform the possible path forward
         for Tech in Asia amidst changing industry trends.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-xl font-bold">Strengths</h3>
+          <h3 className="text-xl font-bold mb-4">Strengths</h3>
           {strengths.map((item: any, index: number) => (
             <AccordionItem
               key={index}
@@ -58,7 +60,7 @@ export function SWOTSection({
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-xl font-bold">Weaknesses</h3>
+          <h3 className="text-xl font-bold mb-4">Weaknesses</h3>
           {weaknesses.map((item: any, index: number) => (
             <AccordionItem
               key={index}
@@ -68,7 +70,7 @@ export function SWOTSection({
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-xl font-bold">Opportunities</h3>
+          <h3 className="text-xl font-bold mb-4">Opportunities</h3>
           {opportunities.map((item: any, index: number) => (
             <AccordionItem
               key={index}
@@ -78,7 +80,7 @@ export function SWOTSection({
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
-          <h3 className="text-xl font-bold">Threats</h3>
+          <h3 className="text-xl font-bold mb-4">Threats</h3>
           {threats.map((item: any, index: number) => (
             <AccordionItem
               key={index}
@@ -88,7 +90,7 @@ export function SWOTSection({
           ))}
         </div>
       </div>
-      <p className="text-gray-700 mt-4">
+      <p>
         The SWOT analysis reveals that while Tech in Asia has a strong
         foundation and brand presence in the Asian tech media landscape, it
         faces significant challenges in terms of engagement, competition, and

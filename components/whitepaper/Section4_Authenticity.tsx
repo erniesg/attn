@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 export function Section4() {
   return (
     <div className="space-y-4" id="section4-authenticity">
-      <h2 className="text-2xl font-bold">
+      <h2 className="text-2xl font-bold gradient-text">
         4. A.I., Meet Human: Augmenting Authenticity in an AI Age
       </h2>
-      <p className="text-gray-700">
+      <p>
         Having taken stock of the status quo and landscape, it is crucial to
         draw inspiration from innovative newsrooms and media models that have
         successfully navigated the changing landscape of journalism, to build
@@ -44,29 +44,11 @@ export function Section4() {
           className="bg-white"
         />
       </div>
-      <p className="text-gray-700">
+      <p>
         These outlets are testaments to the viability of the subscriptions-based
         model. Distilled below are key patterns and takeaways for Tech in Asia.
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <motion.div
-          className="border p-4 bg-white rounded-lg shadow-md"
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="flex items-center space-x-2">
-            <FaBullseye className="text-red-500" />
-            <h3 className="text-xl font-bold">
-              Niche Focus and Differentiation
-            </h3>
-          </div>
-          <p className="text-gray-700 mt-2">
-            All three outlets have all succeeded by focusing on specific niches
-            and offering unique, high-quality content that sets them apart. →
-            Tech in Asia can double down on its expertise in the Asian tech and
-            startup ecosystem, providing in-depth analysis and insights that
-            readers can&apos;t find elsewhere.
-          </p>
-        </motion.div>
         <motion.div
           className="border p-4 bg-white rounded-lg shadow-md"
           whileHover={{ scale: 1.05 }}
@@ -102,6 +84,24 @@ export function Section4() {
             in the AI-Native newsroom journey, seeking their inputs and
             feedback, Tech in Asia can create opportunities for collaboration
             that build a sense of community.
+          </p>
+        </motion.div>
+        <motion.div
+          className="border p-4 bg-white rounded-lg shadow-md"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="flex items-center space-x-2">
+            <FaBullseye className="text-red-500" />
+            <h3 className="text-xl font-bold">
+              Niche Focus and Differentiation
+            </h3>
+          </div>
+          <p className="text-gray-700 mt-2">
+            All three outlets have all succeeded by focusing on specific niches
+            and offering unique, high-quality content that sets them apart. →
+            Tech in Asia can double down on its expertise in the Asian tech and
+            startup ecosystem, providing in-depth analysis and insights that
+            readers can&apos;t find elsewhere.
           </p>
         </motion.div>
         <motion.div

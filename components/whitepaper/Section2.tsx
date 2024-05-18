@@ -5,15 +5,15 @@ const FlourishEmbed = dynamic(() => import('../FlourishEmbed'), { ssr: false });
 export function Section2() {
   return (
     <div className="space-y-4" id="section-2-market-quadrant-analysis">
-      <h2 className="text-2xl font-bold">
+      <h2 className="text-2xl font-bold gradient-text">
         2. Market Quadrant Analysis: Insights from 10 Media Outlets
       </h2>
-      <p className="text-gray-700">
+      <p>
         To better understand Tech in Asia&apos;s position within the competitive
         landscape of tech-focused publications, a Market Quadrant Analysis based
         on two key engagement metrics was conducted:
       </p>
-      <ul className="list-disc list-inside text-gray-700">
+      <ul className="list-disc list-inside">
         <li>
           <strong>Bounce Rate:</strong> The percentage of visitors who navigate
           away from the site after viewing only one page
@@ -23,19 +23,11 @@ export function Section2() {
           the site
         </li>
       </ul>
-      <p className="text-gray-700">
-        Based on data from April from Similarweb, four categories emerged.
-        (Note: These outlets and metrics were chosen in consideration of
-        strategic relevance for Tech in Asia&apos;s content focus and
-        subscriptions-based business, a detailed discussion for the choice will
-        be added to the Appendix later.)
-      </p>
+      <p>Based on data from April from Similarweb, four categories emerged.</p>
       <div className="w-full">
         <FlourishEmbed src="visualisation/18005063" />
       </div>
-      <p className="text-gray-700">
-        The two categories of particular interest are:
-      </p>
+      <p>The two categories of particular interest are:</p>
       <table className="min-w-full bg-white">
         <thead>
           <tr>
@@ -61,7 +53,7 @@ export function Section2() {
           </tr>
         </tbody>
       </table>
-      <p className="text-gray-700">
+      <p>
         From its current position, it is evident that there are opportunities
         for growth and improvement for Tech in Asia to move towards the
         &quot;High Engagement, High Retention&quot; quadrant.

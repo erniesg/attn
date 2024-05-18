@@ -17,6 +17,7 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { SWOTSection } from './whitepaper/Section3_SWOT';
 import { MetaNarrativeSection } from './whitepaper/MetaNarrativeSection';
@@ -34,23 +35,22 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
-const ResponsiveLine = dynamic(
-  () => import('@nivo/line').then((m) => m.ResponsiveLine),
-  { ssr: false }
-);
-
 const FlourishEmbed = dynamic(() => import('./FlourishEmbed'), { ssr: false });
 
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  Card,
-} from '@/components/ui/Card';
 import Link from 'next/link';
-import { SWOTAnalysis } from './SWOTAnalysis';
-import { OutletCard } from './OutletCard';
+import { Lato, Love_Ya_Like_A_Sister } from 'next/font/google';
+
+const lato = Lato({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '700'],
+});
+
+const handwritten = Love_Ya_Like_A_Sister({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400'],
+});
 
 export function V0_whitepaper() {
   useEffect(() => {
@@ -141,13 +141,32 @@ export function V0_whitepaper() {
 
   return (
     <>
+      <Head>
+        <title>
+          Algorithms for Authenticity: Building an AI-Native Newsroom at Tech in
+          Asia
+        </title>
+        <meta
+          name="description"
+          content="Building an AI-Native Newsroom at Tech in Asia. Explore the opportunities and challenges of integrating AI into journalism."
+        />
+        <meta
+          name="keywords"
+          content="AI, journalism, Tech in Asia, AI-Native Newsroom, technology, media, artificial intelligence, large language models, LLM"
+        />
+      </Head>
       <div className="bg-[#F9F9F9] py-12 px-4 md:px-8 lg:px-16">
         <div className="mx-auto max-w-[800px] space-y-12">
           <div className="space-y-4">
-            <h1 className="bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl">
-              Algorithms for Authenticity
+            <h1
+              className={`bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl ${lato.className}`}
+            >
+              Algorithms for{' '}
+              <span className={handwritten.className}>Authenticity</span>
             </h1>
-            <p className="text-2xl font-medium text-gray-700">
+            <p
+              className={`text-2xl font-medium text-gray-700 ${lato.className}`}
+            >
               Building an AI-Native Newsroom at Tech in Asia
             </p>
           </div>
@@ -169,154 +188,39 @@ export function V0_whitepaper() {
           <Section5_StrategicInitiatives />
           <Section6_ContentEngine />
           <Section7_GeographyAndConclusion />
-          {/* <div className="space-y-4" id="conclusion">
-          <h2 className="text-2xl font-bold">
-            5. Conclusion and Future Outlook
-          </h2>
-          <h3 className="text-xl font-medium text-gray-700">
-            Embracing the AI-Powered Future of Journalism
-          </h3>
-          <p className="text-gray-700">
-            As the media landscape continues to evolve, news organizations
-            must adapt and embrace the transformative potential of artificial
-            intelligence and machine learning. By building an AI-native
-            newsroom that prioritizes authenticity and trust, news
-            organizations can regain the confidence of their audiences, stay
-            relevant in the digital age, and shape the future of journalism.
-          </p>
-        </div>
-        <div>
-          <LineChart className="aspect-[16/9]" />
-        </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Card 1</CardTitle>
-              <CardDescription>This is the first card.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl,
-                eget aliquam nisl nisl sit amet nisl.
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Card 2</CardTitle>
-              <CardDescription>This is the second card.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Card 3</CardTitle>
-                <CardDescription>This is the third card.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-700">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  euismod, nisl nec ultricies lacinia, nisl nisl aliquam nisl,
-                  eget aliquam nisl nisl sit amet nisl.
-                </p>
-              </CardContent>
-            </Card>
-          </div> */}
         </div>
       </div>
+      <div className="full-width-gradient">
+        <FlourishEmbed src="visualisation/18017809" />
+      </div>{' '}
       <footer className="bg-gray-900 py-6 text-center text-gray-400">
-        <p>Made with ❤️ by erniesg</p>
+        <p>
+          Made with ❤️ by{' '}
+          <Link
+            className="hover:text-gray-200"
+            href="https://linktr.ee/erniesg"
+          >
+            erniesg
+          </Link>
+        </p>
         <div className="mt-2 flex justify-center space-x-4">
-          <Link className="hover:text-gray-200" href="#">
+          <Link
+            className="hover:text-gray-200"
+            href="https://github.com/erniesg/"
+          >
             <FaGithub className="h-6 w-6" />
           </Link>
-          <Link className="hover:text-gray-200" href="#">
+          <Link
+            className="hover:text-gray-200"
+            href="https://www.linkedin.com/in/erniesg/"
+          >
             <FaLinkedin className="h-6 w-6" />
           </Link>
-          <Link className="hover:text-gray-200" href="#">
+          <Link className="hover:text-gray-200" href="https://x.com/erniesg">
             <FaTwitter className="h-6 w-6" />
           </Link>
         </div>
       </footer>
     </>
-  );
-}
-
-function LineChart(props: any) {
-  return (
-    <div {...props}>
-      <ResponsiveLine
-        data={[
-          {
-            id: 'Desktop',
-            data: [
-              { x: 'Jan', y: 43 },
-              { x: 'Feb', y: 137 },
-              { x: 'Mar', y: 61 },
-              { x: 'Apr', y: 145 },
-              { x: 'May', y: 26 },
-              { x: 'Jun', y: 154 },
-            ],
-          },
-          {
-            id: 'Mobile',
-            data: [
-              { x: 'Jan', y: 60 },
-              { x: 'Feb', y: 48 },
-              { x: 'Mar', y: 177 },
-              { x: 'Apr', y: 78 },
-              { x: 'May', y: 96 },
-              { x: 'Jun', y: 204 },
-            ],
-          },
-        ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-        xScale={{
-          type: 'point',
-        }}
-        yScale={{
-          type: 'linear',
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 5,
-          tickPadding: 16,
-        }}
-        colors={['#2563eb', '#e11d48']}
-        pointSize={6}
-        useMesh={true}
-        gridYValues={6}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: '9999px',
-            },
-            container: {
-              fontSize: '12px',
-              textTransform: 'capitalize',
-              borderRadius: '6px',
-            },
-          },
-          grid: {
-            line: {
-              stroke: '#f3f4f6',
-            },
-          },
-        }}
-        role="application"
-      />
-    </div>
   );
 }

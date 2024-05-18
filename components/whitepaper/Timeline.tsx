@@ -34,10 +34,7 @@ export function TimelineComponent() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent style={{ flex: 0.8 }}>
-          <p>
-            Establish a dedicated AI desk and develop initial proof-of-concept
-            models...
-          </p>
+          <p>Laying the Foundation</p>
           <IconButton onClick={() => handleExpandClick('year1')}>
             {expandedYear === 'year1' ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </IconButton>
@@ -57,7 +54,7 @@ export function TimelineComponent() {
                 generation systems
               </li>
             </ul>
-            <p>
+            <p className="text-gray-700">
               Year 1 helps address Tech in Asia&apos;s limited adoption of AI
               technologies and lays the pipelines and groundwork for enhancing
               content quality and user engagement.
@@ -79,10 +76,7 @@ export function TimelineComponent() {
           <TimelineConnector />
         </TimelineSeparator>
         <TimelineContent style={{ flex: 0.8 }}>
-          <p>
-            Scale up automated content creation and fact-checking to cover a
-            larger portion of editorial output...
-          </p>
+          <p>Scaling Up</p>
           <IconButton onClick={() => handleExpandClick('year2')}>
             {expandedYear === 'year2' ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </IconButton>
@@ -105,7 +99,7 @@ export function TimelineComponent() {
                 Asia&apos;s content archive
               </li>
             </ul>
-            <p>
+            <p className="text-gray-700">
               Year 2 emphasises scaling up successes so Tech in Asia can improve
               its relatively low engagement metrics and start to realise the
               benefits of increased productivity and user satisfaction.
@@ -126,10 +120,7 @@ export function TimelineComponent() {
           />
         </TimelineSeparator>
         <TimelineContent style={{ flex: 0.8 }}>
-          <p>
-            Fully integrate automated content creation and fact-checking into
-            editorial workflows...
-          </p>
+          <p>Full Integration and Continuous Optimisation</p>
           <IconButton onClick={() => handleExpandClick('year3')}>
             {expandedYear === 'year3' ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </IconButton>
@@ -149,7 +140,7 @@ export function TimelineComponent() {
                 and growth
               </li>
             </ul>
-            <p>
+            <p className="text-gray-700">
               Year 3 aims to fully integrate AI into Tech in Asia&apos;s
               editorial workflows and continuously refine algorithms. These
               efforts help solidify Tech in Asia&apos;s position as a leader in

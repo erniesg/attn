@@ -6,6 +6,10 @@ h2 {
   color: black;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .full-width-gradient {
   width: 100vw;
   position: relative;
@@ -20,4 +24,82 @@ h2 {
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  color: #c0181f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#section4-authenticity a {
+  color: #c0181f;
+  text-decoration: none;
+}
+
+#section4-authenticity a:hover {
+  text-decoration: underline;
+}
+
+.border-red-600 {
+  border: 2px solid #c0181f;
+}
+
+.focus\:border-red-600:focus {
+  border-color: #c0181f;
+  outline: none;
+}
+
+body {
+  font-family: 'Lora', Arial, sans-serif;
+  color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lora', Arial, sans-serif;
+}
+
+p,
+a,
+li {
+  font-family: 'Lora', Arial, sans-serif;
+}
+
+.text-white {
+  color: white;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, rgb(24, 160, 223), #c0181f);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+}
+
+.gradient-light {
+  background: linear-gradient(to right, rgb(24, 160, 223), #ffffff);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+}
+
+/* Custom centered gradient */
+.center-gradient {
+  background: linear-gradient(90deg, #c0181f 0%, #ff6b6b 50%, #c0181f 100%);
 }

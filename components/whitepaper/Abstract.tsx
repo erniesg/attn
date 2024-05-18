@@ -1,8 +1,8 @@
 export function Abstract() {
   return (
     <div className="space-y-4" id="abstract">
-      <h2 className="text-2xl font-bold">Abstract</h2>
-      <p className="text-gray-700">
+      <h2 className="text-2xl font-bold gradient-text">Abstract</h2>
+      <p>
         This white paper outlines a strategic roadmap for Tech in Asia to build
         an AI-native newsroom, leveraging AI technologies to enhance subscriber
         growth, engagement, and operational efficiency. Aligning with the
