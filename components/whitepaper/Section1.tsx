@@ -2,8 +2,12 @@ import FlourishEmbed from '../FlourishEmbed';
 
 export function Section1() {
   return (
-    <div className="space-y-4" id="section1">
-      <h2 className="text-2xl font-bold">Section1</h2>
+    <div className="space-y-4" id="section1-the-medium">
+      <h2 className="text-2xl font-bold">
+        <code>
+          1. loop &#123; println!(&quot;The medium is the message&quot;); &#125;
+        </code>
+      </h2>
       <p className="text-gray-700">
         As the world reels from the aftereffects of a social media that has
         encoded McLuhanite echo chambers into the information medium, what might

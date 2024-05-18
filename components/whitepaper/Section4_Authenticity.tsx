@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function Section4() {
   return (
-    <div className="space-y-4" id="section4">
+    <div className="space-y-4" id="section4-authenticity">
       <h2 className="text-2xl font-bold">
         4. A.I., Meet Human: Augmenting Authenticity in an AI Age
       </h2>

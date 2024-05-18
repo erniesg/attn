@@ -5,7 +5,7 @@ export function TableofContents() {
       <nav className="space-y-2">
         <a
           className="block text-gray-700 hover:text-[#C0181F]"
-          href="#section1"
+          href="#section1-the-medium"
         >
           1.{' '}
           <code>
@@ -26,7 +26,7 @@ export function TableofContents() {
         </a>
         <a
           className="block text-gray-700 hover:text-[#C0181F]"
-          href="#section4"
+          href="#section4-authenticity"
         >
           4. A.I., Meet Human: Augmenting Authenticity in an AI Age
         </a>

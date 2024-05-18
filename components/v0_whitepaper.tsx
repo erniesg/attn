@@ -24,7 +24,7 @@ import { TableofContents } from './whitepaper/TableofContents';
 import { Abstract } from './whitepaper/Abstract';
 import { Section1 } from './whitepaper/Section1';
 import { Section2 } from './whitepaper/Section2';
-import { Section4 } from './whitepaper/Section4';
+import { Section4 } from './whitepaper/Section4_Authenticity';
 import { Section5_StrategicInitiatives } from './whitepaper/Section5_StrategicInitiatives';
 import { Section6_ContentEngine } from './whitepaper/Section6_ContentEngine';
 import { Section7_GeographyAndConclusion } from './whitepaper/Section7_GeographyAndConclusion'; // Import the new component
