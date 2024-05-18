@@ -151,7 +151,7 @@ export function V0_whitepaper() {
               Building an AI-Native Newsroom at Tech in Asia
             </p>
           </div>
-<Abstract />
+          <Abstract />
           <TableofContents />
           <Section1 />
           <Section2 />

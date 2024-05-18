@@ -8,7 +8,13 @@ interface SWOTProps {
   threats: any[];
 }
 
-const AccordionItem = ({ title, description }: { title: string; description: string }) => (
+const AccordionItem = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => (
   <Disclosure as="div" className="mb-4">
     {({ open }) => (
       <>
@@ -44,25 +50,41 @@ export function SWOTSection({
         <div className="bg-white p-4 rounded-lg shadow">
           <h3 className="text-xl font-bold">Strengths</h3>
           {strengths.map((item: any, index: number) => (
-            <AccordionItem key={index} title={item.title} description={item.description} />
+            <AccordionItem
+              key={index}
+              title={item.title}
+              description={item.description}
+            />
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <h3 className="text-xl font-bold">Weaknesses</h3>
           {weaknesses.map((item: any, index: number) => (
-            <AccordionItem key={index} title={item.title} description={item.description} />
+            <AccordionItem
+              key={index}
+              title={item.title}
+              description={item.description}
+            />
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <h3 className="text-xl font-bold">Opportunities</h3>
           {opportunities.map((item: any, index: number) => (
-            <AccordionItem key={index} title={item.title} description={item.description} />
+            <AccordionItem
+              key={index}
+              title={item.title}
+              description={item.description}
+            />
           ))}
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <h3 className="text-xl font-bold">Threats</h3>
           {threats.map((item: any, index: number) => (
-            <AccordionItem key={index} title={item.title} description={item.description} />
+            <AccordionItem
+              key={index}
+              title={item.title}
+              description={item.description}
+            />
           ))}
         </div>
       </div>

@@ -46,10 +46,15 @@ export function Section4() {
         model. Distilled below are key patterns and takeaways for Tech in Asia.
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <motion.div className="border p-4 bg-white rounded-lg shadow-md" whileHover={{ scale: 1.05 }}>
+        <motion.div
+          className="border p-4 bg-white rounded-lg shadow-md"
+          whileHover={{ scale: 1.05 }}
+        >
           <div className="flex items-center space-x-2">
             <FaBullseye className="text-red-500" />
-            <h3 className="text-xl font-bold">Niche Focus and Differentiation</h3>
+            <h3 className="text-xl font-bold">
+              Niche Focus and Differentiation
+            </h3>
           </div>
           <p className="text-gray-700 mt-2">
             All three outlets have all succeeded by focusing on specific niches
@@ -59,10 +64,15 @@ export function Section4() {
             readers can&apos;t find elsewhere.
           </p>
         </motion.div>
-        <motion.div className="border p-4 bg-white rounded-lg shadow-md" whileHover={{ scale: 1.05 }}>
+        <motion.div
+          className="border p-4 bg-white rounded-lg shadow-md"
+          whileHover={{ scale: 1.05 }}
+        >
           <div className="flex items-center space-x-2">
             <FaDollarSign className="text-green-500" />
-            <h3 className="text-xl font-bold">Subscription-Based Business Models</h3>
+            <h3 className="text-xl font-bold">
+              Subscription-Based Business Models
+            </h3>
           </div>
           <p className="text-gray-700 mt-2">
             All of them rely primarily on subscription revenue, demonstrating
@@ -72,10 +82,15 @@ export function Section4() {
             readers through exclusive content, features, and benefits.
           </p>
         </motion.div>
-        <motion.div className="border p-4 bg-white rounded-lg shadow-md" whileHover={{ scale: 1.05 }}>
+        <motion.div
+          className="border p-4 bg-white rounded-lg shadow-md"
+          whileHover={{ scale: 1.05 }}
+        >
           <div className="flex items-center space-x-2">
             <FaUsers className="text-blue-500" />
-            <h3 className="text-xl font-bold">Community Engagement and Ownership</h3>
+            <h3 className="text-xl font-bold">
+              Community Engagement and Ownership
+            </h3>
           </div>
           <p className="text-gray-700 mt-2">
             Defector Media and 404 Media have built strong communities around
@@ -86,7 +101,10 @@ export function Section4() {
             that build a sense of community.
           </p>
         </motion.div>
-        <motion.div className="border p-4 bg-white rounded-lg shadow-md" whileHover={{ scale: 1.05 }}>
+        <motion.div
+          className="border p-4 bg-white rounded-lg shadow-md"
+          whileHover={{ scale: 1.05 }}
+        >
           <div className="flex items-center space-x-2">
             <FaShieldAlt className="text-yellow-500" />
             <h3 className="text-xl font-bold">Transparency and Trust</h3>

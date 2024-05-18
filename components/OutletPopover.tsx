@@ -1,4 +1,9 @@
-import { Popover, PopoverButton, PopoverPanel, PopoverGroup } from '@headlessui/react';
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  PopoverGroup,
+} from '@headlessui/react';
 
 interface OutletPopoverProps {
   title: string;
@@ -35,11 +40,29 @@ export function OutletPopover({
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold">{title}</h2>
             <div className="mt-2 text-gray-700">
-              <p><strong>Website:</strong> <a href={website} className="text-blue-500" target="_blank" rel="noopener noreferrer">{website}</a></p>
-              <p><strong>Year Founded:</strong> {yearFounded}</p>
-              <p><strong>Description:</strong> {description}</p>
-              <p><strong>Business Model:</strong> {businessModel}</p>
-              <p><strong>Size:</strong> {size}</p>
+              <p>
+                <strong>Website:</strong>{' '}
+                <a
+                  href={website}
+                  className="text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {website}
+                </a>
+              </p>
+              <p>
+                <strong>Year Founded:</strong> {yearFounded}
+              </p>
+              <p>
+                <strong>Description:</strong> {description}
+              </p>
+              <p>
+                <strong>Business Model:</strong> {businessModel}
+              </p>
+              <p>
+                <strong>Size:</strong> {size}
+              </p>
             </div>
           </div>
         </PopoverPanel>
