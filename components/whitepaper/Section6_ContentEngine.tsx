@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import ArticleTabs from '../ArticleTabs';
 
 const FlourishEmbed = dynamic(() => import('../FlourishEmbed'), { ssr: false });
 
@@ -22,7 +23,7 @@ export function Section6_ContentEngine() {
         absolute value is minimal).{' '}
       </p>
       <div className="w-full">
-        {/* <FlourishEmbed src="visualisation/18005063" /> */}
+        <FlourishEmbed src="visualisation/17923291" />
       </div>
       <p className="text-gray-700">
         The search volume for AI exhibits two notable spikes in 2012 and 2022,
@@ -39,24 +40,49 @@ export function Section6_ContentEngine() {
         technology.
       </p>
       <p className="text-gray-700">
-        For example, the New York Times misrepresented Facebook&apos;s device
-        partnerships, and Bloomberg inaccurately described Amazon&apos;s
-        &quot;Just Walk Out&quot; technology, highlighting a prevalent
-        misunderstanding in mainstream media. These examples underscore the need
-        for tech media to develop specialised expertise in AI to provide
-        nuanced, accurate reporting on the technology. Tech in Asia, with its
-        roots in Y Combinator, has a unique opportunity to lead with informative
-        coverage.{' '}
+        For example, various issues such as mischaracterisation,
+        misunderstanding, sensationalism, fearmongering, oversight, and
+        anthropomorphism have been prevalent in AI reporting. These examples
+        underscore the need for tech media to develop specialised expertise in
+        AI to provide nuanced, accurate reporting on the technology. Tech in
+        Asia, with its roots in Y Combinator, has a unique opportunity to lead
+        with informative coverage.
       </p>
+      <ArticleTabs />
       <h3 className="text-xl font-bold">Strategic Benefits</h3>
       <p className="text-gray-700">
         Perhaps most importantly, AI might be best characterised as a
-        paradigm-shifting, general purpose foundational technology (Carlota
-        Perez) that allows us to scale intelligence and reasoning for the first
-        time. This deep structural impact will play out over many years and
-        across all levels of society, raising existential questions that
-        newsrooms around the world will play a crucial role in helping to
-        answer.
+        paradigm-shifting, general purpose foundational technology
+        <a
+          href="https://www.project-syndicate.org/magazine/ai-is-part-of-larger-technological-revolution-by-carlota-perez-1-2024-03"
+          title="AI’s Place in History by Carlota Perez [Project Syndicate]"
+        >
+          <strong>
+            <sub>[1]</sub>
+          </strong>
+        </a>
+        ,
+        <a
+          href="https://hbr.org/podcast/2023/05/azeem-on-ai-will-large-language-models-reshape-our-economies"
+          title="Azeem on AI: Will Large Language Models Reshape Our Economies? [Harvard Business Review]"
+        >
+          <strong>
+            <sub>[2]</sub>
+          </strong>
+        </a>
+        ,
+        <a
+          href="https://www.digitalnative.tech/p/the-mobile-revolution-vs-the-ai-revolution"
+          title="The Mobile Revolution vs. The AI Revolution [Digital Native]"
+        >
+          <strong>
+            <sub>[3]</sub>
+          </strong>
+        </a>
+        that allows us to scale intelligence and reasoning for the first time.
+        This deep structural impact will play out over many years and across all
+        levels of society, raising existential questions that newsrooms around
+        the world will play a crucial role in helping to answer.
       </p>{' '}
       <div className="space-y-4">
         <div className="question-box" data-aos="fade-up" data-rellax-speed="-2">

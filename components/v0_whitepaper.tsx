@@ -151,6 +151,9 @@ export function V0_whitepaper() {
               Building an AI-Native Newsroom at Tech in Asia
             </p>
           </div>
+          <div className="full-width-gradient">
+            <FlourishEmbed src="visualisation/18014598" />
+          </div>{' '}
           <Abstract />
           <TableofContents />
           <Section1 />

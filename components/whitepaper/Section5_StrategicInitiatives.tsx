@@ -14,6 +14,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import Slider from '@mui/material/Slider';
 import { TimelineComponent } from './Timeline';
+import { ClusterPopover } from '../ClusterPopover';
 
 const FlourishEmbed = dynamic(() => import('../FlourishEmbed'), { ssr: false });
 
@@ -36,6 +37,33 @@ const marks = [
   { value: 1, label: '1' },
   { value: 5, label: '5' },
 ];
+
+const clusterContent = {
+  cluster1: `
+    <h3 class="text-xl font-bold">Cluster 1: Content Creation and Quality</h3>
+    <p>Content creation and quality are at the core of Tech in Asia's AI-Native newsroom vision. By automating routine tasks and ensuring the integrity of its content, Tech in Asia can deliver more value to its readers while maintaining high editorial standards.</p>
+    <ul class="list-disc pl-5 text-gray-700">
+      <li>Automated Content Creation (Revenue Impact: 4, Cost Efficiency: 1, Product Impact: 5): Automated content creation enables Tech in Asia to scale its output without sacrificing quality. By generating draft articles and reports, AI can help journalists focus on more in-depth, investigative pieces. This initiative aligns with Tech in Asia's goals of driving subscriber growth and retention through consistent, high-quality content production.</li>
+      <li>Integrity and Fact-Checking (Revenue Impact: 3, Cost Efficiency: 2, Product Impact: 5): Maintaining the credibility of its content is essential for Tech in Asia's success. AI-powered fact-checking and integrity tools can help verify claims, detect inconsistencies, and flag potential biases, ensuring that published content meets high standards of accuracy and impartiality. This initiative reinforces Tech in Asia's reputation as a trusted source of news and analysis.</li>
+    </ul>
+  `,
+  cluster2: `
+    <h3 class="text-xl font-bold">Cluster 2: Data-Driven Editorial Strategy</h3>
+    <p>Data-driven editorial strategies are key to uncovering unique stories and delivering personalized experiences that resonate with Tech in Asia's audience. By leveraging AI to analyze diverse datasets and user preferences, Tech in Asia can differentiate its coverage and build stronger relationships with its readers.</p>
+    <ul class="list-disc pl-5 text-gray-700">
+      <li>Insight-Driven Story Discovery (Revenue Impact: 4, Cost Efficiency: 2, Product Impact: 5): AI-powered story discovery enables Tech in Asia to identify emerging trends and novel angles from unconventional data sources. By being among the first to report on these stories, Tech in Asia can attract new readers and establish itself as a thought leader in tech journalism.</li>
+      <li>Personalized News Digests (Revenue Impact: 5, Cost Efficiency: 3, Product Impact: 4): Personalized news digests, curated by AI based on individual user interests, can significantly enhance reader engagement and loyalty. By delivering tailored content that consistently meets each user's needs, Tech in Asia can drive subscriber retention and reduce churn.</li>
+    </ul>
+  `,
+  cluster3: `
+    <h3 class="text-xl font-bold">Cluster 3: Workflow Optimization</h3>
+    <p>Optimizing workflows through AI-powered automation is critical for Tech in Asia's global expansion and content discoverability. By streamlining processes and improving the accessibility of its content, Tech in Asia can increase its reach and impact while driving cost efficiencies.</p>
+    <ul class="list-disc pl-5 text-gray-700">
+      <li>Automated Language Translation (Revenue Impact: 4, Cost Efficiency: 4, Product Impact: 3): Automated language translation allows Tech in Asia to make its content accessible to a wider international audience without incurring high manual translation costs. By providing localized content, Tech in Asia can better serve readers in different countries and regions, fostering a more global and inclusive community.</li>
+      <li>Automated Metadata Generation (Revenue Impact: 2, Cost Efficiency: 4, Product Impact: 4): Automated metadata generation improves the searchability and navigability of Tech in Asia's content archive. By consistently categorizing articles with relevant tags and keywords, AI can help users easily find the information they need, enhancing the overall user experience and engagement.</li>
+    </ul>
+  `,
+};
 
 export function Section5_StrategicInitiatives() {
   const [productImpact, setProductImpact] = useState(5);
@@ -65,7 +93,6 @@ export function Section5_StrategicInitiatives() {
         efficiency, using a scoring system that assesses each factor on a scale
         of 1 to 5.
       </p>
-
       <h3 className="text-xl font-bold mt-8">
         Key Dimensions for Prioritisation
       </h3>
@@ -101,7 +128,7 @@ export function Section5_StrategicInitiatives() {
           </p>
         </div>
         <div>
-          <h4 className="font-bold">Cost and Operational Efficiency</h4>
+          <h4 className="font-bold">Cost Efficiency</h4>
           <Slider
             value={costEfficiency}
             min={1}
@@ -116,7 +143,6 @@ export function Section5_StrategicInitiatives() {
           </p>
         </div>
       </div>
-
       <h3 className="text-xl font-bold mt-8">
         Thematic Clusters of Initiatives
       </h3>
@@ -131,58 +157,34 @@ export function Section5_StrategicInitiatives() {
         generation expands global reach and improves content discoverability.
         The clusters work together to drive subscriber growth, engagement, and
         operational efficiency.
-      </p>
-
-      {/* <div className="h-96 mt-8">
-        [Flourish placeholder]
-      </div> */}
-
+      </p>{' '}
+      <div className="w-full">
+        <FlourishEmbed src="visualisation/18013647" />
+      </div>
       <h3 className="text-xl font-bold mt-8">
         Prioritised Initiatives and Time-to-Impact
       </h3>
       <p className="text-gray-700">
-        A detailed discussion of the thematic clusters, ideas and ratings can be
-        found in the appendix.
+        Click on the cards below for a discussion of the thematic clusters,
+        ideas and ratings.
       </p>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 mt-8">
-        <Card>
-          <CardHeader>
-            <CardTitle>Cluster 1: Content Creation and Quality</CardTitle>
-            <CardDescription>Total Score: 24</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Automated Content Creation</li>
-              <li>Integrity and Fact-Checking</li>
-            </ul>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Cluster 2: Data-Driven Editorial Strategy</CardTitle>
-            <CardDescription>Total Score: 23</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Insight-Driven Story Discovery</li>
-              <li>Personalised News Digests</li>
-            </ul>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Cluster 3: Workflow Optimisation</CardTitle>
-            <CardDescription>Total Score: 21</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5 text-gray-700">
-              <li>Automated Language Translation</li>
-              <li>Automated Metadata Generation</li>
-            </ul>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 mt-8">
+        <ClusterPopover
+          title="Cluster 1: Content Creation and Quality"
+          totalScore={24}
+          content={clusterContent.cluster1}
+        />
+        <ClusterPopover
+          title="Cluster 2: Data-Driven Editorial Strategy"
+          totalScore={23}
+          content={clusterContent.cluster2}
+        />
+        <ClusterPopover
+          title="Cluster 3: Workflow Optimization"
+          totalScore={21}
+          content={clusterContent.cluster3}
+        />
       </div>
-
       <h3 className="text-xl font-bold mt-8">Three-Year Plan</h3>
       <p className="text-gray-700">
         A three-year plan is proposed for implementation so ideas can be quickly
@@ -192,21 +194,6 @@ export function Section5_StrategicInitiatives() {
         conditions on-the-ground.
       </p>
       <TimelineComponent />
-      {/*
-      <VerticalTimeline>
-        <VerticalTimelineElement>
-          <h4 className="text-lg font-bold">Year 1</h4>
-          <p>Establish a dedicated AI desk and develop initial proof-of-concept models...</p>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement>
-          <h4 className="text-lg font-bold">Year 2</h4>
-          <p>Scale up automated content creation and fact-checking to cover a larger portion of editorial output...</p>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement>
-          <h4 className="text-lg font-bold">Year 3</h4>
-          <p>Fully integrate automated content creation and fact-checking into editorial workflows, with quality control processes...</p>
-        </VerticalTimelineElement>
-      </VerticalTimeline> */}
       <p>
         By addressing weaknesses and seizing opportunities in a phased manner,
         Tech in Asia can leverage its established brand and in-house teams to

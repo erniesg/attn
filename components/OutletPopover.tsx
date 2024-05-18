@@ -12,6 +12,7 @@ interface OutletPopoverProps {
   description: string;
   businessModel: string;
   size: string;
+  className?: string; // Add this line
 }
 
 export function OutletPopover({

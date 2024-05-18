@@ -23,6 +23,7 @@ export function Section4() {
           description="Stratechery provides in-depth analysis of the tech industry, focusing on business and strategy."
           businessModel="Subscription-based model offering detailed articles, podcasts and analysis to paying subscribers."
           size="26000 paying subscribers, estimated $2M - $5M per year"
+          className="bg-white"
         />
         <OutletPopover
           title="Defector Media"
@@ -31,6 +32,7 @@ export function Section4() {
           description="Defector Media is a worker-owned, subscription-based digital media company founded by former Deadspin journalists. It focuses on sports, culture, and politics, offering a mix of free and paywalled content."
           businessModel="Subscription-based model, with additional revenue from merchandise and events."
           size="40000 paying subscribers, $4.5M from September 2022 to August 2023 (85% from subscriptions)"
+          className="bg-white"
         />
         <OutletPopover
           title="404 Media"
@@ -39,6 +41,7 @@ export function Section4() {
           description="404 Media is founded by ex-Vice journalists dedicated to investigative journalism, funded by community support and member contributions."
           businessModel="Community-funded, with memberships supporting investigative reporting."
           size="Profitable 6 months in according to Nieman Lab"
+          className="bg-white"
         />
       </div>
       <p className="text-gray-700">
