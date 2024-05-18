@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Section7_GeographyAndConclusion() {
   return (
-    <div className="space-y-4" id="geography-and-conclusion">
+    <div className="space-y-4" id="section-7-geography-and-conclusion">
       <h2 className="text-2xl font-bold">
         The Geography of AI-Native Journalism and Conclusion
       </h2>

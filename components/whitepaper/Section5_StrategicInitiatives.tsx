@@ -42,7 +42,10 @@ export function Section5_StrategicInitiatives() {
   const [revenueImpact, setRevenueImpact] = useState(5);
   const [costEfficiency, setCostEfficiency] = useState(5);
 
-  const renderExplanation = (dimension, value) => {
+  const renderExplanation = (
+    dimension: keyof typeof explanations,
+    value: number
+  ): string | null => {
     if (value === 1 || value === 5) {
       return explanations[dimension][value];
     }
@@ -50,7 +53,7 @@ export function Section5_StrategicInitiatives() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" id="section5-strategic-initiatives">
       <h2 className="text-2xl font-bold">
         Strategic Initiatives: Roadmap to an AI-Native Newsroom
       </h2>

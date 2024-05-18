@@ -18,9 +18,10 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import dynamic from 'next/dynamic';
-import { SWOTSection } from './whitepaper/SWOTSection';
+import { SWOTSection } from './whitepaper/Section3_SWOT';
 import { MetaNarrativeSection } from './whitepaper/MetaNarrativeSection';
 import { TableofContents } from './whitepaper/TableofContents';
+import { Abstract } from './whitepaper/Abstract';
 import { Section1 } from './whitepaper/Section1';
 import { Section2 } from './whitepaper/Section2';
 import { Section4 } from './whitepaper/Section4';
@@ -150,20 +151,7 @@ export function V0_whitepaper() {
               Building an AI-Native Newsroom at Tech in Asia
             </p>
           </div>
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold">Abstract</h2>
-            <p className="text-gray-700">
-              This white paper outlines a strategic roadmap for Tech in Asia to
-              build an AI-native newsroom, leveraging AI technologies to enhance
-              subscriber growth, engagement, and operational efficiency.
-              Aligning with the company&apos;s mission and post-acquisition
-              growth strategy, the initiatives draw from an analysis of 10 media
-              outlets and Tech in Asia&apos;s capabilities. These prioritised
-              initiatives and establishment of a dedicated AI desk aims to
-              support the goal of over $100 million in annual recurring revenue
-              by 2027.
-            </p>
-          </div>
+<Abstract />
           <TableofContents />
           <Section1 />
           <Section2 />

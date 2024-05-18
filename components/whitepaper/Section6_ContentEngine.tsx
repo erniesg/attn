@@ -4,7 +4,7 @@ const FlourishEmbed = dynamic(() => import('../FlourishEmbed'), { ssr: false });
 
 export function Section6_ContentEngine() {
   return (
-    <div className="space-y-4" id="content-engine">
+    <div className="space-y-4" id="section6-content-engine">
       <h2 className="text-2xl font-bold">
         Content Engine: Opportunities for an AI Desk
       </h2>

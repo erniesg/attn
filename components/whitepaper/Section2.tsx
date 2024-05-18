@@ -4,7 +4,7 @@ const FlourishEmbed = dynamic(() => import('../FlourishEmbed'), { ssr: false });
 
 export function Section2() {
   return (
-    <div className="space-y-4" id="market-quadrant-analysis">
+    <div className="space-y-4" id="section-2-market-quadrant-analysis">
       <h2 className="text-2xl font-bold">
         2. Market Quadrant Analysis: Insights from 10 Media Outlets
       </h2>
