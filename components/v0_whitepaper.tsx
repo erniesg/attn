@@ -161,7 +161,7 @@ export function V0_whitepaper() {
             <h1
               className={`bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl ${lato.className}`}
             >
-              Algorithms for
+              Algorithms for&nbsp;
               <span className={handwritten.className}>Authenticity</span>
             </h1>
             <p
