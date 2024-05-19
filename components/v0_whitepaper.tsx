@@ -138,7 +138,6 @@ export function V0_whitepaper() {
         'Potential for AI bias, inaccuracies, or ethical issues that could harm reputation',
     },
   ];
-
   return (
     <>
       <Head>
@@ -156,13 +155,13 @@ export function V0_whitepaper() {
         />
       </Head>
       <div className="bg-[#F9F9F9] py-12 px-4 md:px-8 lg:px-16">
-        <div className="container space-y-12">
-          {/* <div className="mx-auto max-w-[800px] space-y-12"> */}
+        <div className="mx-auto container space-y-12">
+          {/* <div className="full-width space-y-12"> */}
           <div className="space-y-4">
             <h1
               className={`bg-gradient-to-r from-[#C0181F] to-[#FF6B6B] bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl ${lato.className}`}
             >
-              Algorithms for{' '}
+              Algorithms for
               <span className={handwritten.className}>Authenticity</span>
             </h1>
             <p
@@ -173,7 +172,7 @@ export function V0_whitepaper() {
           </div>
           <div className="full-width-gradient">
             <FlourishEmbed src="visualisation/18014598" />
-          </div>{' '}
+          </div>
           <Abstract />
           <TableofContents />
           <Section1 />
@@ -193,7 +192,7 @@ export function V0_whitepaper() {
       </div>
       <div className="full-width-gradient">
         <FlourishEmbed src="visualisation/18017809" />
-      </div>{' '}
+      </div>
       <footer className="bg-gray-900 py-6 text-center text-gray-400">
         <p>
           Made with ❤️ by{' '}

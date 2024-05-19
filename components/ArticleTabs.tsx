@@ -86,24 +86,26 @@ function classNames(...classes: string[]) {
 const ArticleTabs: React.FC = () => {
   return (
     <TabGroup>
-      <TabList className="flex p-1 space-x-1 bg-gradient-to-r from-[#C0181F] via-[#FF6B6B] to-[#C0181F] rounded-xl">
-        {articles.map((article, idx) => (
-          <Tab
-            key={idx}
-            className={({ selected }) =>
-              classNames(
-                'w-full py-2.5 text-sm leading-5 font-medium rounded-lg',
-                'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-[#C0181F] ring-white ring-opacity-60',
-                selected
-                  ? 'bg-white text-[#C0181F] shadow'
-                  : 'text-white hover:bg-white/[0.12] hover:text-white'
-              )
-            }
-          >
-            {article.label}
-          </Tab>
-        ))}
-      </TabList>
+      <div className="overflow-x-auto">
+        <TabList className="flex p-1 space-x-1 bg-gradient-to-r from-[#C0181F] via-[#FF6B6B] to-[#C0181F] rounded-xl min-w-max">
+          {articles.map((article, idx) => (
+            <Tab
+              key={idx}
+              className={({ selected }) =>
+                classNames(
+                  'w-full py-2.5 text-sm leading-5 font-medium rounded-lg',
+                  'focus:outline-none focus:ring-2 ring-offset-2 ring-offset-[#C0181F] ring-white ring-opacity-60',
+                  selected
+                    ? 'bg-white text-[#C0181F] shadow'
+                    : 'text-white hover:bg-white/[0.12] hover:text-white'
+                )
+              }
+            >
+              {article.label}
+            </Tab>
+          ))}
+        </TabList>
+      </div>
       <TabPanels className="mt-2">
         {articles.map((article, idx) => (
           <TabPanel

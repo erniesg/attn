@@ -2,13 +2,172 @@
 @tailwind components;
 @tailwind utilities;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to ensure horizontal scrolling works well */
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Typography Styles */
+body,
+html {
+  font-family: 'Lora', Arial, sans-serif;
+  color: black;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Lora', Arial, sans-serif;
+}
+
+p,
+a,
+li {
+  font-family: 'Lora', Arial, sans-serif;
+}
+
 h2 {
   color: black;
+}
+
+/* Link Styles */
+a {
+  color: #c0181f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#section4-authenticity a {
+  color: #c0181f;
+  text-decoration: none;
+}
+
+#section4-authenticity a:hover {
+  text-decoration: underline;
+}
+
+/* Container and Layout Styles */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Optional: set a max-width for larger screens */
+  margin: 0 auto;
+  padding: 0 16px; /* Optional padding for some spacing */
 }
 
 .full-width {
   width: 100%;
 }
+
+/* .full-width-gradient {
+  width: 100%;
+  position: relative;
+  margin: 0;
+} */
+
+@media (max-width: 768px) {
+  .full-width-gradient {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .full-width-gradient {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Miscellaneous Styles */
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.question-box {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.border-red-600 {
+  border: 2px solid #c0181f;
+}
+
+.focus\:border-red-600:focus {
+  border-color: #c0181f;
+  outline: none;
+}
+
+.text-white {
+  color: white;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, rgb(24, 160, 223), #c0181f);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+}
+
+.gradient-light {
+  background: linear-gradient(to right, rgb(24, 160, 223), #ffffff);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -ms-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -ms-text-fill-color: transparent;
+}
+
+.center-gradient {
+  background: linear-gradient(90deg, #c0181f 0%, #ff6b6b 50%, #c0181f 100%);
+}
+
+/* Embed Styles */
+.FlourishEmbed {
+  width: 100%;
+  height: auto;
+}
+
+/* h2 {
+  color: black;
+}
+
+.full-width {
+  width: 100%;
+} */
 
 .full-width-gradient {
   width: 100vw;
@@ -17,6 +176,12 @@ h2 {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* .full-width-gradient {
+  width: 100%;
+  position: relative;
+  margin: 0;
 }
 
 .question-box {
@@ -59,15 +224,16 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */
 
-.container {
+/* .container {
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px; /* Optional padding for some spacing */
-}
+  padding: 0 16px;
+} */
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -95,8 +261,8 @@ li {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   -ms-text-fill-color: transparent;
-}
-
+} */
+/*
 .gradient-light {
   background: linear-gradient(to right, rgb(24, 160, 223), #ffffff);
   -webkit-background-clip: text;
@@ -106,14 +272,14 @@ li {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   -ms-text-fill-color: transparent;
-}
+} */
 
 /* Custom centered gradient */
-.center-gradient {
+/* .center-gradient {
   background: linear-gradient(90deg, #c0181f 0%, #ff6b6b 50%, #c0181f 100%);
-}
+} */
 
-.full-width {
+/* .full-width {
   width: 100%;
 }
 
@@ -150,9 +316,15 @@ li {
   width: 100%;
   padding: 0;
   margin: 0;
-}
-
+} */
+/*
 .FlourishEmbed {
   width: 100%;
   height: auto;
 }
+
+.full-width-gradient {
+  width: 100%;
+  position: relative;
+  margin: 0;
+} */
