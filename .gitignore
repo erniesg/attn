@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore __pycache__ directories
+__pycache__/
+
+# Ignore extract_tia.py
+extract_tia.py
+
+# Ignore data folder
+data/
