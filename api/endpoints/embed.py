@@ -17,16 +17,19 @@ app_image = (
     .pip_install(
         "requests",
         "llama-index",
-        "llama-index-embeddings-huggingface",
+        "llama-index-embeddings-huggingface==0.2.0",
         "sentence-transformers",
         "torch",  # Ensure PyTorch is installed for GPU support
         "transformers",  # Ensure transformers library is installed
-        "xformers"
+        "xformers",
+        "llama_index.embeddings.nomic",
+        "nomic"
     )
 )
 
 app = App(name="embed-svc", image=app_image, secrets=[
-    Secret.from_name("my-huggingface-secret")
+    Secret.from_name("my-huggingface-secret"),
+    Secret.from_name("my-nomic-secret")
 ])
 
 class EmbedRequest(BaseModel):
@@ -40,7 +43,7 @@ class EmbedResponse(BaseModel):
 
 @app.function(gpu="any", timeout=300, mounts=[
     Mount.from_local_dir(
-        local_path="/Users/erniesg/code/erniesg/shareshare/attn/api/endpoints",
+        local_path="/Users/erniesg/code/erniesg/attn/api/endpoints",
         remote_path="/app/endpoints",
         condition=lambda pth: "embed.py" not in pth,
         recursive=True
@@ -54,7 +57,8 @@ async def embed(request: EmbedRequest):
     logger.info(f"Files in the /app/endpoints directory: {os.listdir('/app/endpoints')}")
 
     huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
-    embedding_handler = EmbeddingHandler(huggingface_token=huggingface_token)
+    nomic_api_key = os.getenv("NOMIC_API_KEY")
+    embedding_handler = EmbeddingHandler(huggingface_token=huggingface_token, nomic_api_key=nomic_api_key)
 
     try:
         if isinstance(request.data, str):
