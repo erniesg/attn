@@ -50,7 +50,7 @@ class ExtractRequest(BaseModel):
 
 @app.function(mounts=[
     Mount.from_local_dir(
-        local_path="/Users/erniesg/code/erniesg/shareshare/attn/api/endpoints",
+        local_path="/Users/erniesg/code/erniesg/attn/api/endpoints",
         remote_path="/app/endpoints",
         condition=lambda pth: "extract.py" not in pth,
         recursive=True
