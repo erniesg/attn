@@ -18,17 +18,12 @@ class MappedData(BaseModel):
     excerpt: str = ""
     token_count: int = 0
 
-def map_to_nomic_atlas(mapped_data: List[MappedData]) -> str:
+def map_to_nomic_atlas(mapped_data: List[MappedData]) -> Dict:
     # Initialize Nomic Atlas client
     nomic_api_key = os.getenv("NOMIC_API_KEY")
-    if not nomic_api_key:
-        logger.error("Nomic API key is not set")
-        raise ValueError("Nomic API key is not set")
-
-    # Log in to Nomic
     nomic.login(nomic_api_key)
 
-    # Prepare data for Nomic Atlas
+    # Prepare data for Atlas
     atlas_data = [
         {
             "id": data.id,
@@ -53,7 +48,14 @@ def map_to_nomic_atlas(mapped_data: List[MappedData]) -> str:
         topic_model=True
     )
 
-    map_url = dataset.maps[0].url  # Retrieve the map URL
+    # Retrieve the map URL and other details from the dataset object
+    map_url = dataset.maps[0].map_link  # Access the URL correctly
+    # topics = dataset.maps[0].topics.df.to_dict()  # Convert topics to dictionary
+    status = dataset.maps[0]._status  # Get the status of the map
 
     logger.info(f"Map created successfully: {map_url}")
-    return map_url
+    return {
+        "map_url": map_url,
+        # "topics": topics,
+        "status": status
+    }

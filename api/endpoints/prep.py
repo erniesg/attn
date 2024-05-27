@@ -8,6 +8,7 @@ import logging
 from datetime import datetime
 from modal import Image, App, web_endpoint, Secret, Mount
 import tiktoken
+import asyncio
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -42,6 +43,7 @@ class MappedData(BaseModel):
 
 class PrepResponse(BaseModel):
     mapped_data: List[MappedData]
+    errors: List[Dict[str, Any]] = []  # Add errors field
 
 # Configuration mappings
 CONFIGS = {
@@ -89,7 +91,7 @@ def map_data(rows: List[Dict[str, Any]], config: str) -> List[MappedData]:
             excerpt="",  # Placeholder for excerpt
             token_count=token_count  # Set token count
         )
-        logger.info(f"Mapped row: {mapped_row}")  # Log the mapped row
+        logger.info(f"Mapped row")  # Log the mapped row
         mapped_data.append(mapped_row)
 
     return mapped_data
@@ -127,16 +129,13 @@ def fetch_additional_data(slug: str) -> Dict[str, Any]:
             condition=lambda pth: "prep.py" not in pth,
             recursive=True
         )
-    ]
+    ],
+    timeout=10800  # Set timeout to 3 hours (10800 seconds)
 )
 @web_endpoint(method="POST")
 async def prep(request: PrepRequest) -> PrepResponse:
     sys.path.insert(0, '/app')
     sys.path.insert(0, '/app/endpoints')
-    logger.info(f"Current sys.path: {sys.path}")
-    logger.info(f"Files in the /app/endpoints directory: {os.listdir('/app/endpoints')}")
-    logger.info(f"Files and directories in the current working directory: {os.listdir('.')}")
-
     # Import the save_data function from supabase_save.py
     from supabase_save import save_data, SaveDataRequest
     from index import index_documents, convert_to_documents, create_collection_if_not_exists  # Import functions from index.py
@@ -146,13 +145,6 @@ async def prep(request: PrepRequest) -> PrepResponse:
     SUPABASE_URL = os.getenv("SUPABASE_URL")
     SUPABASE_KEY = os.getenv("SUPABASE_KEY")
     SUPABASE_PW = os.getenv("SUPABASE_PW")
-
-    if SUPABASE_URL and SUPABASE_KEY:
-        logger.info(f"Supabase URL (last 4 chars): {SUPABASE_URL[-4:]}")
-        logger.info(f"Supabase Key (last 4 chars): {SUPABASE_KEY[-4:]}")
-    else:
-        logger.error("Supabase URL or Key is not set")
-        raise HTTPException(status_code=500, detail="Supabase URL or Key is not set")
 
     try:
         rows = [row.data for row in request.rows]
@@ -172,8 +164,12 @@ async def prep(request: PrepRequest) -> PrepResponse:
                     raise ValueError(additional_data["error"])
                 mapped_row.date = additional_data.get("date")
                 mapped_row.excerpt = additional_data.get("excerpt")
-                logger.info(f"Updated mapped data with additional info: {mapped_row}")  # Log the updated mapped data
+                logger.info(f"Updated mapped data with additional info")  # Log the updated mapped data
                 mapped_data.append(mapped_row)
+                await asyncio.sleep(1)  # Add a 1-second wait
+            except Exception as e:
+                logger.error(f"Error processing row: {row}, error: {e}")
+                errors.append({"row": row, "error": str(e)})
             except Exception as e:
                 logger.error(f"Error processing row: {row}, error: {e}")
                 errors.append({"row": row, "error": str(e)})
@@ -199,16 +195,15 @@ async def prep(request: PrepRequest) -> PrepResponse:
                 logger.info("Data indexed successfully")  # Log the indexing action
             except Exception as e:
                 logger.error(f"Error during indexing: {e}")
-                raise HTTPException(status_code=500, detail=f"Indexing error: {str(e)}")
+                errors.append({"error": str(e)})
         elif request.action == "map":
             try:
                 # Map the data to Nomic Atlas
-                map_url = map_to_nomic_atlas(mapped_data)
-                logger.info(f"Data mapped successfully to Nomic Atlas: {map_url}")  # Log the mapping action
-                return {"map_url": map_url}
+                result = map_to_nomic_atlas(mapped_data)
+                logger.info(f"Data mapped successfully to Nomic Atlas: {result['map_url']}")  # Log the mapping action
             except Exception as e:
                 logger.error(f"Error during mapping: {e}")
-                raise HTTPException(status_code=500, detail=f"Mapping error: {str(e)}")
+                errors.append({"error": str(e)})
         else:
             try:
                 # Save the mapped data to Supabase
@@ -217,12 +212,13 @@ async def prep(request: PrepRequest) -> PrepResponse:
                     table_name="techinasia_posts"
                 )
                 save_data(save_data_request)
-                logger.info("Data saved successfully")  # Log the save action
+                logger.info("Data saved successfully to Supabase")  # Log the saving action
             except Exception as e:
                 logger.error(f"Error during saving: {e}")
-                raise HTTPException(status_code=500, detail=f"Saving error: {str(e)}")
+                errors.append({"error": str(e)})
 
-        return PrepResponse(mapped_data=mapped_data)
+        return PrepResponse(mapped_data=mapped_data, errors=errors)
+
     except Exception as e:
-        logger.error(f"Error processing data: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Error processing request: {e}")
+        raise HTTPException(status_code=500, detail=f"Processing error: {str(e)}")
